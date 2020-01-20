@@ -11,7 +11,7 @@ rule compute_wtdbg_squashed_assembly_layout:
     threads: 
         config['num_cpu']
     shell: 
-        'wtdbg2 -x sq -i {input.fastq} -g3g -t {threads.t} -o {output.layout}'
+        'wtdbg2 -x sq -i {input.fastq} -g3g -t {threads} -o {output.layout}'
 
 
 rule compute_wtdbg_squashed_assembly_consensus:
@@ -22,5 +22,5 @@ rule compute_wtdbg_squashed_assembly_consensus:
     threads: 
         config['num_cpu']
     shell:
-        'wtpoa-cns -t {threads.t} -i {input.layout} -o {output.squashed_assembly}'
+        'wtpoa-cns -t {threads} -i {input.layout} -o {output.squashed_assembly}'
 
