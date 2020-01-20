@@ -1,6 +1,7 @@
 configfile: '/project/haplotyping/nico/scripts/diploid_assembly_sv_detection/config.yml'
 workdir: '/project/haplotyping/nico/analysis/DiploidAssembly/'
 
+print(config)
 
 rule compute_wtdbg_squashed_assembly_layout:
     input: 
