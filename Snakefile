@@ -1,4 +1,4 @@
-configfile: 'config.yml'
+configfile: '/project/haplotyping/nico/scripts/diploid_assembly_sv_detection/config.yml'
 workdir: '/project/haplotyping/nico/analysis/DiploidAssembly/'
 
 
