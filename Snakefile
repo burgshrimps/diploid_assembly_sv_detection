@@ -8,9 +8,10 @@ rule compute_wtdbg_squashed_assembly_layout:
         fastq = 'input/fastq/pacbio/{sample}/{sample}_pacbio_subreads.fastq.gz'
     output: 
         layout = 'assemblies/squashed/wtdbg2/{sample}/{sample}.ctg.lay.gz'
-    threads: 16 #config['num_cpu']
+    threads: 
+        t = config['num_cpu']
     shell: 
-        'wtdbg2 -x sq -i {input.fastq} -g3g -t {threads} -o {output.layout}'
+        'wtdbg2 -x sq -i {input.fastq} -g3g -t {threads.t} -o {output.layout}'
 
 
 rule compute_wtdbg_squashed_assembly_consensus:
@@ -18,7 +19,8 @@ rule compute_wtdbg_squashed_assembly_consensus:
         layout = 'assemblies/squashed/wtdbg2/{sample}/{sample}.ctg.lay.gz'
     output:
         squashed_assembly = 'assemblies/squashed/wtdbg2/{sample}/{sample}_sqa-wtdbg.fasta'
-    threads: config['num_cpu']
+    threads: 
+        t = config['num_cpu']
     shell:
-        'wtpoa-cns -t {threads} -i {input.layout} -o {output.squashed_assembly}'
+        'wtpoa-cns -t {threads.t} -i {input.layout} -o {output.squashed_assembly}'
 
